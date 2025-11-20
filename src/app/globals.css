@@ -1,35 +1,156 @@
 @import "tailwindcss";
 
-/* ====== TEMA GERAL ====== */
+/* =========================================================
+   🔥 TEMA GLOBAL – PRETO + VERMELHO MODERNO
+   ========================================================= */
+
+/* ====== BASE DO SITE ====== */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #0a0a0a; /* preto profundo */
-  color: #ffffff; /* texto branco */
+
+  /* Fundo com leve gradiente preto premium */
+  background: linear-gradient(180deg, #050505 0%, #0b0b0b 40%, #111 100%);
+  color: #e6e6e6;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 
+               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
   overflow-x: hidden;
 }
 
-/* ====== LINKS E BOTÕES ====== */
+/* ====== SUAVIZAÇÃO DO TEXTO ====== */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ====== SELEÇÃO DE TEXTO (temática vermelha) ====== */
+::selection {
+  background: #ff0000;
+  color: #fff;
+}
+
+/* =========================================================
+   🔴 TIPOGRAFIA GLOBAL
+   ========================================================= */
+h1, h2, h3, h4, h5, h6 {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Títulos com destaque vermelho */
+.red-title {
+  background: linear-gradient(90deg, #ff3b3b, #b80000);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+/* Parágrafos */
+p {
+  color: #d1d1d1;
+}
+
+/* =========================================================
+   🔥 LINKS E BOTÕES
+   ========================================================= */
 a, button {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Botão padrão em vermelho */
+/* Botão padrão premium */
 .my-btn {
-  @apply px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition;
+  @apply px-4 py-2 rounded-xl text-white transition-all duration-200;
+  background: linear-gradient(145deg, #b30000, #ff0000);
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.35);
 }
 
-/* ====== SCROLLBAR (detalhe vermelho) ====== */
+.my-btn:hover {
+  background: linear-gradient(145deg, #ff0000, #b30000);
+  box-shadow: 0 0 16px rgba(255, 0, 0, 0.55);
+  transform: translateY(-1px);
+}
+
+/* Versão outline */
+.my-btn-outline {
+  @apply px-4 py-2 rounded-xl border transition;
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
+.my-btn-outline:hover {
+  background: #ff0000;
+  color: #fff;
+}
+
+/* =========================================================
+   🔥 CARTÕES E CONTAINERS GLOBAL
+   ========================================================= */
+.card {
+  background: rgba(20, 20, 20, 0.85);
+  border: 1px solid rgba(255, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 1.5rem;
+  backdrop-filter: blur(6px);
+  box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.08), 
+              0 0 12px rgba(255, 0, 0, 0.18);
+}
+
+.card:hover {
+  border-color: rgba(255, 0, 0, 0.6);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+/* =========================================================
+   🔥 SCROLLBAR (PRETO + VERMELHO)
+   ========================================================= */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ff0000;
-  border-radius: 10px;
+  background: linear-gradient(180deg, #ff0000, #b00000);
+  border-radius: 20px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #0e0e0e;
+}
+
+/* =========================================================
+   🔥 ANIMAÇÕES REUTILIZÁVEIS
+   ========================================================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+/* Fade suave para títulos */
+@keyframes fadeGlow {
+  0% { opacity: 0; filter: brightness(0.6); }
+  100% { opacity: 1; filter: brightness(1); }
+}
+
+.animate-glow {
+  animation: fadeGlow 0.5s ease-in-out forwards;
+}
+
+
+/* =========================================================
+   🔥 TEMAS DE SEÇÕES (OPCIONAL)
+   ========================================================= */
+.section-dark {
+  background: linear-gradient(180deg, #0b0b0b, #111);
+  padding: 4rem 1rem;
+}
+
+.section-red {
+  background: linear-gradient(90deg, #8a0000, #b30000, #8a0000);
+  padding: 4rem 1rem;
+  color: #fff;
 }
