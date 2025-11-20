@@ -4,7 +4,7 @@ export default function HomePage() {
       {/* HERO */}
       <section className="max-w-6xl mx-auto text-center py-20">
         <h1 className="text-5xl font-extrabold red-title animate-glow">
-          Aprenda o Básico do CS2
+          Domine o CS2 do Jeito Certo
         </h1>
         <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
           Domine os fundamentos, mapas, estratégias e mecânicas essenciais para evoluir no Counter‑Strike 2.

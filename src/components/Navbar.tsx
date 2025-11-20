@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto flex items-center justify-between p-4">
         {/* LOGO */}
         <h1 className="text-xl font-extrabold bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent drop-shadow-[0_0_4px_rgba(255,0,0,0.4)]">
-          Aprenda o Básico do CS2
+          CS2 Utility Hub
         </h1>
 
         {/* MENU DESKTOP */}

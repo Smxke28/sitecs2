@@ -12,9 +12,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR">
       <body className="bg-black text-white">
         <Navbar />
-        <div className="pt-20"> {/* empurra o conteúdo para baixo */}
+
+        {/* CONTEÚDO PRINCIPAL */}
+        <div className="pt-20">
           {children}
         </div>
+
+        {/* === RODAPÉ GLOBAL === */}
+        <footer className="w-full text-center text-sm text-gray-500 py-6 mt-10 border-t border-red-900/40">
+          © 2025 Juan • Desenvolvedor Web — CS2 Tática & Mapas
+        </footer>
       </body>
     </html>
   )
