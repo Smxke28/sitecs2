@@ -8,7 +8,9 @@
 
 /* Estilos do body -->
 --------------------------------------------- */
-html, body, #__next { height: 100%; }
+html, body, #__next {
+  height: 100%;
+}
 
 body {
   margin: 0;
