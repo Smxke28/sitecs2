@@ -20,10 +20,10 @@ export default function HomePage() {
         <h2 className="text-3xl font-bold red-title mb-6">Mapas Populares</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-          { name: "Mirage", img: "/maps/mirage.png" },
-          { name: "Dust II", img: "/maps/dust2.png" },
-          { name: "Inferno", img: "/maps/inferno.png" },
-          { name: "Overpass", img: "/maps/overpass.png" }
+          { name: "Mirage", img: "/mirage.png" },
+          { name: "Dust II", img: "/Dust.png" },
+          { name: "Inferno", img: "/Inferno.png" },
+          { name: "Overpass", img: "/Overpass.png" }
         ].map((map) => (
             <a key={map.name} href={`/Mapas/${map.name}`} className="card cursor-pointer hover:scale-[1.02] transition-all duration-200 text-center overflow-hidden p-0">
               <img src={map.img} alt={map.name} className="w-full h-32 object-cover opacity-90 hover:opacity-100 transition" />
