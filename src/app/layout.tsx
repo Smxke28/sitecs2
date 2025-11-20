@@ -1,19 +1,21 @@
-import './globals.css';
-import React from 'react';
+import './globals.css'
+import type { Metadata } from 'next'
+import Navbar from '../components/Navbar'
 
-export const metadata = {
-  title: 'CS2',
-  description: 'Projeto CS2'
-};
+export const metadata: Metadata = {
+  title: 'Meu Projeto',
+  description: 'Descrição do meu projeto',
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body>
-        <main className="min-h-screen flex flex-col">
+      <body className="bg-black text-white">
+        <Navbar />
+        <div className="pt-20"> {/* empurra o conteúdo para baixo */}
           {children}
-        </main>
+        </div>
       </body>
     </html>
-  );
+  )
 }
