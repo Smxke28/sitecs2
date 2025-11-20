@@ -12,13 +12,13 @@
     "node": ">=20.9.0"
   },
   "dependencies": {
-    "next": "16.0.3",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "postcss": "^8.5.6",
-    "autoprefixer": "^10.4.22",
-    "tailwindcss": "^4.1.17"
- },
+  "next": "16.0.3",
+  "react": "19.2.0",
+  "react-dom": "19.2.0",
+  "tailwindcss": "^4.1.17",
+  "postcss": "^8.5.6",
+  "autoprefixer": "^10.4.22"
+},
   "devDependencies": {
     "typescript": "^5.5.0"
  }
