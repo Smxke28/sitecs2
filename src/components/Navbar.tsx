@@ -27,15 +27,6 @@ export default function Navbar() {
             </Link>
           </li>
 
-          <li>
-            <Link
-              href="/Sobre"
-              className="hover:text-red-400 transition duration-200"
-            >
-              Sobre
-            </Link>
-          </li>
-
           {/* MAPAS (DESKTOP HOVER) */}
           <li className="relative group">
             <span className="hover:text-red-400 cursor-pointer select-none transition duration-200">
@@ -86,12 +77,23 @@ export default function Navbar() {
               Contato
             </Link>
           </li>
+
+          <li>
+            <Link
+              href="/Sobre"
+              className="hover:text-red-400 transition duration-200"
+            >
+              Sobre
+            </Link>
+          </li>
         </ul>
 
         {/* BOTÃO MOBILE */}
         <button
           className="md:hidden text-red-500 hover:text-red-400 transition"
           onClick={() => setOpenMobile(!openMobile)}
+          aria-label={openMobile ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={openMobile}
         >
           {openMobile ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -103,25 +105,12 @@ export default function Navbar() {
           <Link
             href="/"
             className="hover:text-red-400 transition"
-            onClick={() => setOpenMobile(false)}
+            onClick={() => {
+              setOpenMobile(false);
+              setOpenDropdownMobile(false);
+            }}
           >
             Pagina Inicial
-          </Link>
-
-          <Link
-            href="/Sobre"
-            className="hover:text-red-400 transition"
-            onClick={() => setOpenMobile(false)}
-          >
-            Sobre
-          </Link>
-
-          <Link
-            href="/Contato"
-            className="hover:text-red-400 transition"
-            onClick={() => setOpenMobile(false)}
-          >
-            Contato
           </Link>
 
           {/* MAPAS (MOBILE CLICK) */}
@@ -129,16 +118,21 @@ export default function Navbar() {
             <button
               className="text-left hover:text-red-400 transition"
               onClick={() => setOpenDropdownMobile(!openDropdownMobile)}
+              aria-expanded={openDropdownMobile}
+              aria-controls="mobile-mapas"
             >
               Mapas ▾
             </button>
 
             {openDropdownMobile && (
-              <div className="ml-4 mt-2 flex flex-col gap-2 animate-fadeIn">
+              <div id="mobile-mapas" className="ml-4 mt-2 flex flex-col gap-2 animate-fadeIn">
                 <Link
                   href="/Mapas/Mirage"
                   className="hover:text-red-400 transition"
-                  onClick={() => setOpenMobile(false)}
+                  onClick={() => {
+                    setOpenMobile(false);
+                    setOpenDropdownMobile(false);
+                  }}
                 >
                   Mirage
                 </Link>
@@ -146,7 +140,10 @@ export default function Navbar() {
                 <Link
                   href="/Mapas/Dust"
                   className="hover:text-red-400 transition"
-                  onClick={() => setOpenMobile(false)}
+                  onClick={() => {
+                    setOpenMobile(false);
+                    setOpenDropdownMobile(false);
+                  }}
                 >
                   Dust II
                 </Link>
@@ -154,7 +151,10 @@ export default function Navbar() {
                 <Link
                   href="/Mapas/Inferno"
                   className="hover:text-red-400 transition"
-                  onClick={() => setOpenMobile(false)}
+                  onClick={() => {
+                    setOpenMobile(false);
+                    setOpenDropdownMobile(false);
+                  }}
                 >
                   Inferno
                 </Link>
@@ -162,13 +162,38 @@ export default function Navbar() {
                 <Link
                   href="/Mapas/Overpass"
                   className="hover:text-red-400 transition"
-                  onClick={() => setOpenMobile(false)}
+                  onClick={() => {
+                    setOpenMobile(false);
+                    setOpenDropdownMobile(false);
+                  }}
                 >
                   Overpass
                 </Link>
               </div>
             )}
           </div>
+
+          <Link
+            href="/Contato"
+            className="hover:text-red-400 transition"
+            onClick={() => {
+              setOpenMobile(false);
+              setOpenDropdownMobile(false);
+            }}
+          >
+            Contato
+          </Link>
+
+          <Link
+            href="/Sobre"
+            className="hover:text-red-400 transition"
+            onClick={() => {
+              setOpenMobile(false);
+              setOpenDropdownMobile(false);
+            }}
+          >
+            Sobre
+          </Link>
         </div>
       )}
     </nav>

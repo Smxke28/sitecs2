@@ -55,6 +55,7 @@ export default function Sobre() {
             <TechItem name="Tailwind CSS" />
             <TechItem name="Lucide Icons" />
             <TechItem name="CSS Animations" />
+            <TechItem name="JavaScript" />
           </div>
         </section>
 
@@ -106,24 +107,32 @@ export default function Sobre() {
 /* COMPONENTE — Tecnologias */
 function TechItem({ name }: { name: string }) {
   return (
-    <div className="flex items-center gap-3 bg-black/40 px-4 py-3 rounded-2xl border border-red-700/40">
+    <button
+      type="button"
+      className="
+        flex items-center gap-3 bg-black/40 px-4 py-3 rounded-2xl border border-red-700/40
+        hover:bg-red-700 hover:border-red-600 hover:text-white transition-colors duration-200
+      "
+      aria-label={name}
+    >
       {/* Ícone genérico de tecnologia */}
       <svg
         width="22"
         height="22"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="red"
+        stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="opacity-80"
+        className="opacity-80 text-red-400"
+        aria-hidden
       >
         <path d="M4 4h16v16H4z" />
         <path d="M9 9h6v6H9z" />
       </svg>
 
-      <span className="text-lg text-gray-300">{name}</span>
-    </div>
+      <span className="text-lg text-gray-300 hover:text-white">{name}</span>
+    </button>
   );
 }
