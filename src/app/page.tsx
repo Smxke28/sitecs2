@@ -21,7 +21,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
           { name: "Mirage", img: "/mirage.png" },
-          { name: "Dust II", img: "/Dust.png" },
+          { name: "Dust", img: "/Dust.png" },
           { name: "Inferno", img: "/Inferno.png" },
           { name: "Overpass", img: "/Overpass.png" }
         ].map((map) => (

@@ -30,7 +30,7 @@ export default function Inferno() {
       >
         {/* mini imagem */}
         <Image
-          src="/Mirage.png"
+          src="/mirage.png"
           width={40}
           height={40}
           alt="Mirage"

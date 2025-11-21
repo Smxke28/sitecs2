@@ -80,7 +80,7 @@ export default function Dust() {
       {/* IMAGEM PRINCIPAL */}
       <div className="max-w-6xl mx-auto mb-16 relative group">
         <Image
-          src="/dust.png"
+          src="/Dust.png"
           width={1400}
           height={600}
           alt="Dust II"
