@@ -5,8 +5,9 @@ node_modules/
 .next/
 out/
 
-# Cache do Turbopack / Dev
+# Cache do Turbopack (evita arquivos grandes)
 dev/cache/
+*.sst
 
 # Variáveis de ambiente
 .env
@@ -26,7 +27,7 @@ Thumbs.db
 .idea/
 
 # Vercel
-.vercel
+.vercel/
 
 # TypeScript
 *.tsbuildinfo
