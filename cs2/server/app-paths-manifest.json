@@ -1,0 +1,13 @@
+{
+  "/Contato/page": "app/Contato/page.js",
+  "/Mapas/Dust/page": "app/Mapas/Dust/page.js",
+  "/Mapas/Inferno/page": "app/Mapas/Inferno/page.js",
+  "/Mapas/Mirage/page": "app/Mapas/Mirage/page.js",
+  "/Mapas/Overpass/page": "app/Mapas/Overpass/page.js",
+  "/Mapas/page": "app/Mapas/page.js",
+  "/Sobre/page": "app/Sobre/page.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js"
+}
