@@ -1,4 +1,4 @@
-
+[README-sitecs2.md](https://github.com/user-attachments/files/29230114/README-sitecs2.md)
 #  Site CS2
 
 Site informativo e de treino sobre Counter-Strike 2, desenvolvido com Next.js, TypeScript e Tailwind CSS.
@@ -9,7 +9,7 @@ Site informativo e de treino sobre Counter-Strike 2, desenvolvido com Next.js, T
 - Interface moderna e responsiva
 - Construído com App Router do Next.js 16
 
-##  Tecnologias
+## 🛠️ Tecnologias
 
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
