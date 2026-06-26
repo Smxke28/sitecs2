@@ -3,234 +3,104 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Flame, Zap, MoveUpRight, X } from "lucide-react";
+import { X } from "lucide-react";
 
-export default function Dust() {
-  const [activeModal, setActiveModal] = useState<string | null>(null);
+type UtilKey = "smokes" | "flashes" | "molotovs" | "jumps";
 
-  const openModal = (id: string) => setActiveModal(id);
-  const closeModal = () => setActiveModal(null);
+const utils: { key: UtilKey; label: string; icon: string }[] = [
+  { key: "smokes",   label: "Smokes",     icon: "💨" },
+  { key: "flashes",  label: "Flashbangs", icon: "⚡" },
+  { key: "molotovs", label: "Molotovs",   icon: "🔥" },
+  { key: "jumps",    label: "Pulos",      icon: "⬆" },
+];
+
+const modalData: Record<UtilKey, { title: string; videos: { src: string; desc: string }[] }> = {
+  smokes:   { title: "Smokes — Dust II",     videos: [{ src: "/videos/dust-smoke-ct.mp4", desc: "Smoke CT — essencial para dominar meio." }, { src: "/videos/dust-smoke-cross.mp4", desc: "Smoke Cross — entrada segura no bomb A." }] },
+  flashes:  { title: "Flashbangs — Dust II", videos: [{ src: "/videos/dust-flash-long.mp4", desc: "Flash longa para avançar com segurança." }, { src: "/videos/dust-flash-mid.mp4", desc: "Flash meio para contestar controle adversário." }] },
+  molotovs: { title: "Molotovs — Dust II",   videos: [{ src: "/videos/dust-molotov-car.mp4", desc: "Molotov Car — essencial nos duelos no Long." }] },
+  jumps:    { title: "Pulos — Dust II",      videos: [{ src: "/videos/dust-jump-xbox.mp4", desc: "Pulo Xbox — método rápido sem boost." }] },
+};
+
+export default function DustPage() {
+  const [active, setActive] = useState<UtilKey | null>(null);
 
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-10">
+    <div style={{ background: "linear-gradient(180deg, #050507 0%, #080810 100%)", minHeight: "100vh" }}>
 
-      {/* BOTÃO FIXO IR PARA INFERNO */}
-      <Link
-        href="/Mapas/Inferno"
-        className="
-          fixed bottom-8 right-8 z-50
-          bg-[#0d0d0d]/70 backdrop-blur-xl
-          px-4 py-3 rounded-2xl border-2 border-red-600
-          shadow-[0_0_20px_rgba(255,0,0,0.4)]
-          hover:shadow-[0_0_40px_rgba(255,0,0,0.7)]
-          transition-all duration-300
-          flex items-center gap-3
-          hover:-translate-y-1 hover:scale-105
-        "
-      >
-        {/* mini imagem */}
-        <Image
-          src="/Inferno.png"
-          width={40}
-          height={40}
-          alt="Inferno"
-          className="rounded-lg object-cover"
-        />
-
-        {/* texto */}
-        <span className="text-xl font-bold text-red-400 drop-shadow-lg">
-          Inferno
-        </span>
-
-        {/* ícone seta */}
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="text-red-500"
-        >
-          <circle cx="12" cy="12" r="9" />
-          <path d="M10 8l4 4-4 4" />
-        </svg>
+      <Link href="/Mapas/Inferno" className="next-map-btn">
+        <Image src="/Inferno.png" width={40} height={40} alt="Inferno" style={{ borderRadius: "8px", objectFit: "cover" }} />
+        <div>
+          <div style={{ fontSize: "0.62rem", color: "#555577", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "2px" }}>Próximo mapa</div>
+          <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#F5F5F8" }}>Inferno</div>
+        </div>
+        <span style={{ color: "#E8192C", fontSize: "1.1rem" }}>→</span>
       </Link>
 
-      {/* HEADER */}
-      <header className="max-w-6xl mx-auto mb-14 text-center">
-        <h1 className="text-5xl font-extrabold bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent drop-shadow-lg">
-          Dust II — Guia Completo
-        </h1>
-
-        <p className="text-gray-400 mt-3 text-lg">
-          Smokes, flashes, molotovs e pulos essenciais para dominar Dust II.
-        </p>
-
-        <Link
-          href="/"
-          className="inline-block mt-6 text-red-500 hover:text-red-600 transition font-semibold"
-        >
-          ← Voltar para o menu
-        </Link>
-      </header>
-
-      {/* IMAGEM PRINCIPAL */}
-      <div className="max-w-6xl mx-auto mb-16 relative group">
-        <Image
-          src="/Dust.png"
-          width={1400}
-          height={600}
-          alt="Dust II"
-          className="rounded-3xl shadow-[0_0_35px_rgba(255,0,0,0.45)] group-hover:shadow-[0_0_60px_rgba(255,0,0,0.7)] transition-all duration-500 object-cover"
-          priority
-        />
-      </div>
-
-      {/* GRID DE CARDS */}
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10">
-        <Card
-          title="Smokes"
-          icon={
-            <div className="p-2 rounded-full border-2 border-red-500 flex items-center justify-center shadow-[0_0_10px_rgba(255,0,0,0.5)]">
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="text-red-500"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 15c-1.5-1-2-3-.5-4.5s3-1.5 4.5-.5c.5-2 2.5-3 4-2s2 3 1 4c2 .5 3 2.5 2 4s-3 2-4.5 1c-.5 1.5-2 2.5-3.5 2s-2.5-2-2-3.5z" />
-                <path d="M9 4c0 1.5 1 2.5 2 3" />
-                <path d="M13 2c0 1.5 1.5 3 3 3.5" />
-              </svg>
-            </div>
-          }
-          onClick={() => openModal("smokes")}
-        />
-
-        <Card
-          title="Flashbangs"
-          icon={<Zap className="text-red-400 w-8 h-8" />}
-          onClick={() => openModal("flashes")}
-        />
-
-        <Card
-          title="Molotovs"
-          icon={<Flame className="text-red-400 w-8 h-8" />}
-          onClick={() => openModal("molotovs")}
-        />
-
-        <Card
-          title="Pulos"
-          icon={<MoveUpRight className="text-red-400 w-8 h-8" />}
-          onClick={() => openModal("jumps")}
-        />
-      </div>
-
-      {/* MODAIS - Dust II */}
-      {activeModal === "smokes" && (
-        <Modal title="Smokes — Dust II" close={closeModal}>
-          <VideoBlock
-            video="/videos/dust-smoke-ct.mp4"
-            desc="Smoke CT — essencial para dominar meio."
-          />
-          <VideoBlock
-            video="/videos/dust-smoke-cross.mp4"
-            desc="Smoke Cross — entrada segura no bomb A."
-          />
-        </Modal>
-      )}
-
-      {activeModal === "flashes" && (
-        <Modal title="Flashbangs — Dust II" close={closeModal}>
-          <VideoBlock
-            video="/videos/dust-flash-long.mp4"
-            desc="Flash longa para avançar com segurança."
-          />
-          <VideoBlock
-            video="/videos/dust-flash-mid.mp4"
-            desc="Flash meio para contestar controle adversário."
-          />
-        </Modal>
-      )}
-
-      {activeModal === "molotovs" && (
-        <Modal title="Molotovs — Dust II" close={closeModal}>
-          <VideoBlock
-            video="/videos/dust-molotov-car.mp4"
-            desc="Molotov Car — essencial nos duelos no Long."
-          />
-        </Modal>
-      )}
-
-      {activeModal === "jumps" && (
-        <Modal title="Pulos — Dust II" close={closeModal}>
-          <VideoBlock
-            video="/videos/dust-jump-xbox.mp4"
-            desc="Pulo Xbox — método rápido sem boost."
-          />
-        </Modal>
-      )}
-    </div>
-  );
-}
-
-/* CARD */
-function Card({ title, icon, onClick }: any) {
-  return (
-    <button
-      onClick={onClick}
-      className="
-        bg-[#0d0d0d]/60 backdrop-blur-xl 
-        p-8 rounded-3xl border border-red-700/40 
-        shadow-[0_0_20px_rgba(255,0,0,0.15)]
-        hover:shadow-[0_0_45px_rgba(255,0,0,0.6)]
-        transition-all duration-500
-        transform hover:-translate-y-2 hover:scale-[1.02]
-        text-left w-full
-      "
-    >
-      <div className="flex items-center gap-3 mb-4">
-        {icon}
-        <h2 className="text-3xl font-bold text-red-400 drop-shadow-md">{title}</h2>
-      </div>
-      <p className="text-gray-400 text-lg">Clique para ver vídeos e explicações.</p>
-    </button>
-  );
-}
-
-/* MODAL */
-function Modal({ title, close, children }: any) {
-  return (
-    <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-      <div className="bg-[#111] w-full max-w-3xl p-6 rounded-3xl border border-red-700 shadow-xl relative animate-fadeIn">
-        <button className="absolute top-4 right-4 text-gray-300 hover:text-red-500" onClick={close}>
-          <X size={26} />
-        </button>
-
-        <h2 className="text-3xl font-bold mb-6 text-red-400">{title}</h2>
-
-        <div className="space-y-8 max-h-[70vh] overflow-y-auto pr-2">
-          {children}
+      <section style={{ padding: "72px 24px 48px", maxWidth: "1200px", margin: "0 auto" }}>
+        <div style={{ marginBottom: "10px" }}>
+          <Link href="/Mapas" style={{ fontSize: "0.78rem", color: "#555577", fontFamily: "'JetBrains Mono', monospace", textDecoration: "none" }}>← Todos os mapas</Link>
         </div>
-      </div>
-    </div>
-  );
-}
+        <div className="section-label" style={{ marginBottom: "16px" }}>Guia Completo</div>
+        <h1 className="font-display" style={{ fontSize: "clamp(2.5rem, 7vw, 5rem)", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.01em", lineHeight: 1, marginBottom: "16px" }}>
+          <span style={{ color: "#F5F5F8" }}>Dust II</span>
+          <span className="text-red-gradient"> — Utilidades</span>
+        </h1>
+        <p style={{ fontSize: "1rem", color: "#888899", maxWidth: "500px", lineHeight: 1.7 }}>
+          O clássico absoluto. Long, mid e bomb B definem o ritmo do jogo. Aprenda cada smoke essencial.
+        </p>
+      </section>
 
-/* BLOCO DE VÍDEO */
-function VideoBlock({ video, desc }: any) {
-  return (
-    <div>
-      <video src={video} controls className="w-full rounded-xl mb-2" />
-      <p className="text-gray-300">{desc}</p>
+      <hr className="divider" />
+
+      <section style={{ maxWidth: "1200px", margin: "0 auto", padding: "48px 24px" }}>
+        <div className="map-img-wrap" style={{ position: "relative", height: "clamp(200px, 35vw, 420px)" }}>
+          <Image src="/Dust.png" alt="Dust II" fill style={{ objectFit: "cover" }} priority sizes="100vw" />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 50%, rgba(5,5,7,0.8) 100%)" }} />
+        </div>
+      </section>
+
+      <section style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px 96px" }}>
+        <div style={{ marginBottom: "32px" }}>
+          <div className="section-label" style={{ marginBottom: "12px" }}>Selecione a categoria</div>
+          <h2 className="font-display" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, textTransform: "uppercase", color: "#F5F5F8" }}>Utilidades</h2>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "14px" }}>
+          {utils.map((u) => (
+            <button key={u.key} className="util-card" onClick={() => setActive(u.key)}>
+              <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "12px" }}>
+                <div style={{ width: "44px", height: "44px", borderRadius: "10px", background: "rgba(232,25,44,0.1)", border: "1px solid rgba(232,25,44,0.2)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem" }}>{u.icon}</div>
+                <h3 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 800, color: "#F5F5F8", textTransform: "uppercase", letterSpacing: "0.02em" }}>{u.label}</h3>
+              </div>
+              <p style={{ fontSize: "0.85rem", color: "#888899", lineHeight: 1.6 }}>Clique para ver vídeos e explicações detalhadas.</p>
+              <div style={{ marginTop: "16px", fontSize: "0.8rem", color: "#E8192C", fontWeight: 600 }}>Ver utilidades →</div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {active && (
+        <div className="modal-overlay" onClick={() => setActive(null)}>
+          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setActive(null)} style={{ position: "absolute", top: "16px", right: "16px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "6px", cursor: "pointer", color: "#888899", display: "flex" }}>
+              <X size={20} />
+            </button>
+            <div className="section-label" style={{ marginBottom: "12px" }}>{modalData[active].title}</div>
+            <h2 className="font-display" style={{ fontSize: "1.8rem", fontWeight: 800, textTransform: "uppercase", color: "#F5F5F8", marginBottom: "28px" }}>
+              {utils.find(u => u.key === active)?.label}
+            </h2>
+            <div style={{ maxHeight: "60vh", overflowY: "auto", display: "flex", flexDirection: "column", gap: "28px", paddingRight: "4px" }}>
+              {modalData[active].videos.map((v, i) => (
+                <div key={i} style={{ background: "rgba(255,255,255,0.03)", borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.05)" }}>
+                  <video src={v.src} controls style={{ width: "100%", display: "block" }} />
+                  <div style={{ padding: "12px 16px" }}>
+                    <p style={{ fontSize: "0.875rem", color: "#888899", lineHeight: 1.6 }}>{v.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

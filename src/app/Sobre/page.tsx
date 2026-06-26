@@ -1,138 +1,82 @@
-export default function Sobre() {
+const techs = ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Lucide Icons', 'CSS Animations', 'JavaScript'];
+
+export default function SobrePage() {
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-10">
-
-      {/* HEADER */}
-      <header className="max-w-4xl mx-auto text-center mb-14">
-        <h1 className="text-5xl font-extrabold bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent drop-shadow-lg">
-          Sobre o Projeto
+    <div style={{ background: 'linear-gradient(180deg, #050507 0%, #080810 100%)', minHeight: '100vh' }}>
+      <section style={{ padding: '72px 24px 56px', maxWidth: '900px', margin: '0 auto' }}>
+        <div className="section-label" style={{ marginBottom: '16px' }}>Sobre o projeto</div>
+        <h1 className="font-display" style={{
+          fontSize: 'clamp(2.2rem, 6vw, 4rem)', fontWeight: 900,
+          textTransform: 'uppercase', letterSpacing: '0.01em',
+          color: '#F5F5F8', lineHeight: 1, marginBottom: '16px',
+        }}>
+          CS2 <span className="text-red-gradient">Utility Hub</span>
         </h1>
-
-        <p className="text-gray-400 mt-4 text-lg">
-          Uma plataforma criada para reunir utilidades, execuções, smokes, flashes e táticas de CS2 — organizada com foco em aprender, treinar e evoluir.
+        <p style={{ fontSize: '1rem', color: '#888899', maxWidth: '480px', lineHeight: 1.7 }}>
+          Plataforma criada para reunir utilidades, smokes, flashes e táticas de CS2
+          — organizada com foco em aprender, treinar e evoluir.
         </p>
-      </header>
+      </section>
 
-      {/* CONTAINER PRINCIPAL */}
-      <div className="max-w-4xl mx-auto space-y-10">
+      <hr className="divider" />
 
-        {/* CARD 1 — SOBRE */}
-        <section
-          className="
-            bg-[#0d0d0d]/60 backdrop-blur-xl p-8 rounded-3xl 
-            border border-red-700/40 shadow-[0_0_20px_rgba(255,0,0,0.15)]
-            hover:shadow-[0_0_45px_rgba(255,0,0,0.5)]
-            transition-all duration-500
-          "
-        >
-          <h2 className="text-3xl font-bold text-red-400 mb-4">O Propósito</h2>
+      <section style={{ maxWidth: '900px', margin: '0 auto', padding: '56px 24px 96px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
-          <p className="text-gray-300 leading-relaxed text-lg">
-            Este projeto foi desenvolvido com o objetivo de estudar e evoluir em:
-            desenvolvimento web, organização visual, experiência do usuário e práticas modernas de frontend.
-            Ele também serve como um repositório pessoal de estratégias para CS2, reunindo vídeos e explicações
-            sobre utilidades essenciais nos mapas.
+        {/* Propósito */}
+        <div className="card-cs2" style={{ padding: '36px' }}>
+          <div className="section-label" style={{ marginBottom: '16px' }}>01 — Propósito</div>
+          <h2 className="font-display" style={{ fontSize: '1.6rem', fontWeight: 800, textTransform: 'uppercase', color: '#F5F5F8', marginBottom: '16px' }}>
+            Por que existe?
+          </h2>
+          <p style={{ fontSize: '0.9rem', color: '#888899', lineHeight: 1.8 }}>
+            Este projeto foi desenvolvido para estudar e evoluir em desenvolvimento web, organização visual,
+            experiência do usuário e práticas modernas de frontend. Também serve como repositório pessoal
+            de estratégias para CS2, reunindo vídeos e explicações sobre utilidades essenciais nos mapas.
           </p>
-        </section>
+        </div>
 
-        {/* CARD 2 — TECNOLOGIAS */}
-        <section
-          className="
-            bg-[#0d0d0d]/60 backdrop-blur-xl p-8 rounded-3xl 
-            border border-red-700/40 shadow-[0_0_20px_rgba(255,0,0,0.15)]
-            hover:shadow-[0_0_45px_rgba(255,0,0,0.5)]
-            transition-all duration-500
-          "
-        >
-          <h2 className="text-3xl font-bold text-red-400 mb-6">Tecnologias Utilizadas</h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-
-            {/* ITEM */}
-            <TechItem name="Next.js" />
-            <TechItem name="React" />
-            <TechItem name="TypeScript" />
-            <TechItem name="Tailwind CSS" />
-            <TechItem name="Lucide Icons" />
-            <TechItem name="CSS Animations" />
-            <TechItem name="JavaScript" />
+        {/* Tecnologias */}
+        <div className="card-cs2" style={{ padding: '36px' }}>
+          <div className="section-label" style={{ marginBottom: '16px' }}>02 — Stack</div>
+          <h2 className="font-display" style={{ fontSize: '1.6rem', fontWeight: 800, textTransform: 'uppercase', color: '#F5F5F8', marginBottom: '24px' }}>
+            Tecnologias
+          </h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+            {techs.map(t => (
+              <span key={t} className="tag-red" style={{ fontSize: '0.75rem', padding: '6px 14px' }}>{t}</span>
+            ))}
           </div>
-        </section>
+        </div>
 
-        {/* CARD 3 — CRÉDITOS */}
-        <section
-          className="
-            bg-[#0d0d0d]/60 backdrop-blur-xl p-8 rounded-3xl 
-            border border-red-700/40 shadow-[0_0_20px_rgba(255,0,0,0.15)]
-            hover:shadow-[0_0_45px_rgba(255,0,0,0.5)]
-            transition-all duration-500
-          "
-        >
-          <h2 className="text-3xl font-bold text-red-400 mb-6">Créditos dos Vídeos</h2>
-
-          <p className="text-gray-300 text-lg">
+        {/* Créditos */}
+        <div className="card-cs2" style={{ padding: '36px' }}>
+          <div className="section-label" style={{ marginBottom: '16px' }}>03 — Créditos</div>
+          <h2 className="font-display" style={{ fontSize: '1.6rem', fontWeight: 800, textTransform: 'uppercase', color: '#F5F5F8', marginBottom: '16px' }}>
+            Vídeos
+          </h2>
+          <p style={{ fontSize: '0.9rem', color: '#888899', lineHeight: 1.8 }}>
             Todos os vídeos usados neste projeto são destinados a fins de estudo e aprendizado.
             Os direitos pertencem aos criadores originais no YouTube.
-            Sempre que possível, os links e nomes dos autores serão mencionados.
+            Sempre que possível, os links e nomes dos autores são mencionados.
           </p>
-        </section>
+        </div>
 
-        {/* CARD 4 — AUTOR */}
-        <section
-          className="
-            bg-[#0d0d0d]/60 backdrop-blur-xl p-8 rounded-3xl 
-            border border-red-700/40 shadow-[0_0_20px_rgba(255,0,0,0.15)]
-            hover:shadow-[0_0_45px_rgba(255,0,0,0.5)]
-            transition-all duration-500
-          "
-        >
-          <h2 className="text-3xl font-bold text-red-400 mb-6">O Criador</h2>
-
-          <p className="text-gray-300 text-lg leading-relaxed">
-            O projeto foi criado por <span className="text-red-400 font-semibold">Juan Lavecchia</span>,
-            com o objetivo de unir aprendizado em programação com a paixão pelo Counter-Strike.
-            A ideia é expandir cada vez mais o site, aprimorando mapas, utilidades e recursos.
+        {/* Autor */}
+        <div className="card-cs2" style={{ padding: '36px' }}>
+          <div className="section-label" style={{ marginBottom: '16px' }}>04 — Criador</div>
+          <h2 className="font-display" style={{ fontSize: '1.6rem', fontWeight: 800, textTransform: 'uppercase', color: '#F5F5F8', marginBottom: '16px' }}>
+            Juan Lavecchia
+          </h2>
+          <p style={{ fontSize: '0.9rem', color: '#888899', lineHeight: 1.8, marginBottom: '12px' }}>
+            Desenvolvedor web e estudante de Ciências da Computação. Este projeto une aprendizado em
+            programação com a paixão pelo Counter-Strike. A ideia é expandir cada vez mais o site,
+            aprimorando mapas, utilidades e recursos.
           </p>
-
-          <p className="text-gray-500 mt-3 text-sm">
-            *Novos mapas, táticas e recursos serão adicionados gradualmente conforme o projeto evolui ao longo do tempo.*
+          <p style={{ fontSize: '0.78rem', color: '#444455', fontFamily: "'JetBrains Mono', monospace" }}>
+            // novos mapas e recursos serão adicionados gradualmente
           </p>
-        </section>
-      </div>
-
-    </main>
-  );
-}
-
-/* COMPONENTE — Tecnologias */
-function TechItem({ name }: { name: string }) {
-  return (
-    <button
-      type="button"
-      className="
-        flex items-center gap-3 bg-black/40 px-4 py-3 rounded-2xl border border-red-700/40
-        hover:bg-red-700 hover:border-red-600 hover:text-white transition-colors duration-200
-      "
-      aria-label={name}
-    >
-      {/* Ícone genérico de tecnologia */}
-      <svg
-        width="22"
-        height="22"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="opacity-80 text-red-400"
-        aria-hidden
-      >
-        <path d="M4 4h16v16H4z" />
-        <path d="M9 9h6v6H9z" />
-      </svg>
-
-      <span className="text-lg text-gray-300 hover:text-white">{name}</span>
-    </button>
+        </div>
+      </section>
+    </div>
   );
 }

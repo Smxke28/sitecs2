@@ -1,65 +1,64 @@
-import Link from "next/link";
+import Link from 'next/link';
+import Image from 'next/image';
 
-export default function Mapas() {
+const maps = [
+  { name: 'Mirage',   img: '/mirage.png',  href: '/Mapas/Mirage',  desc: 'O mais jogado do competitivo. Dominar Mirage é essencial para qualquer rank.' },
+  { name: 'Dust II',  img: '/Dust.png',    href: '/Mapas/Dust',    desc: 'O clássico absoluto. Long, mid e bomb B definem rounds inteiros.' },
+  { name: 'Inferno',  img: '/Inferno.png', href: '/Mapas/Inferno', desc: 'Fechado e intenso. Controlar banana muda o resultado da partida.' },
+  { name: 'Overpass', img: '/Overpass.png',href: '/Mapas/Overpass',desc: 'Complexo e vertical. Canal e short são os pontos mais decisivos.' },
+];
+
+export default function MapasPage() {
   return (
-    <div className="min-h-screen text-white p-10">
+    <div style={{ background: 'linear-gradient(180deg, #050507 0%, #080810 100%)', minHeight: '100vh' }}>
+      <section style={{ padding: '72px 24px 56px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div className="section-label" style={{ marginBottom: '16px' }}>Guias Táticos</div>
+        <h1 className="font-display" style={{
+          fontSize: 'clamp(2.2rem, 6vw, 4rem)', fontWeight: 900,
+          textTransform: 'uppercase', letterSpacing: '0.01em',
+          color: '#F5F5F8', lineHeight: 1, marginBottom: '16px',
+        }}>
+          Mapas <span className="text-red-gradient">Disponíveis</span>
+        </h1>
+        <p style={{ fontSize: '1rem', color: '#888899', maxWidth: '460px', lineHeight: 1.7 }}>
+          Escolha um mapa para acessar o guia completo de utilidades,
+          smokes, flashes e posições.
+        </p>
+      </section>
 
-      <h1 className="text-4xl font-bold text-red-500 mb-6">
-        Mapas Disponíveis
-      </h1>
+      <hr className="divider" />
 
-      <p className="text-gray-300 mb-8">
-        Escolha um mapa abaixo para ver o módulo completo.
-      </p>
-
-      {/* GRID DE MAPAS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-
-        {/* Mapa 1 */}
-        <Link
-          href="/Mapas/Mirage"
-          className="bg-black border border-red-600 rounded-xl p-6 shadow-lg hover:shadow-red-600/50 hover:bg-red-600/20 transition"
-        >
-          <h2 className="text-xl font-bold mb-2">Mirage</h2>
-          <p className="text-gray-400 text-sm">
-            Acesse o módulo completo do mapa Mirage.
-          </p>
-        </Link>
-
-        {/* Mapa 2 */}
-        <Link
-          href="/Mapas/Dust"
-          className="bg-black border border-red-600 rounded-xl p-6 shadow-lg hover:shadow-red-600/50 hover:bg-red-600/20 transition"
-        >
-          <h2 className="text-xl font-bold mb-2">Dust 2</h2>
-          <p className="text-gray-400 text-sm">
-            Acesse o módulo completo do mapa Dust 2.
-          </p>
-        </Link>
-
-        {/* Mapa 3 */}
-        <Link
-          href="/Mapas/Inferno"
-          className="bg-black border border-red-600 rounded-xl p-6 shadow-lg hover:shadow-red-600/50 hover:bg-red-600/20 transition"
-        >
-          <h2 className="text-xl font-bold mb-2">Inferno</h2>
-          <p className="text-gray-400 text-sm">
-            Acesse o módulo completo do mapa Inferno.
-          </p>
-        </Link>
-
-        {/* Mapa 4 */}
-        <Link
-          href="/Mapas/Overpass"
-          className="bg-black border border-red-600 rounded-xl p-6 shadow-lg hover:shadow-red-600/50 hover:bg-red-600/20 transition"
-        >
-          <h2 className="text-xl font-bold mb-2">Overpass</h2>
-          <p className="text-gray-400 text-sm">
-            Acesse o módulo completo do mapa Overpass.
-          </p>
-        </Link>
-
-      </div>
+      <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '56px 24px 96px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
+          {maps.map((map, i) => (
+            <Link key={map.name} href={map.href} className="card-cs2" style={{ textDecoration: 'none', display: 'block' }}>
+              <div style={{ position: 'relative', height: '180px', overflow: 'hidden' }}>
+                <Image src={map.img} alt={map.name} fill
+                  style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }}
+                  sizes="(max-width: 768px) 100vw, 320px" />
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(180deg, transparent 30%, rgba(14,14,18,0.97) 100%)',
+                }} />
+                <div style={{ position: 'absolute', bottom: '16px', left: '18px', right: '18px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                  <h2 className="font-display" style={{ fontSize: '1.8rem', fontWeight: 900, color: '#F5F5F8', textTransform: 'uppercase', letterSpacing: '0.02em', lineHeight: 1 }}>
+                    {map.name}
+                  </h2>
+                  <span className="tag-red">Guia</span>
+                </div>
+              </div>
+              <div style={{ padding: '20px 18px' }}>
+                <p style={{ fontSize: '0.875rem', color: '#888899', lineHeight: 1.65, marginBottom: '16px' }}>
+                  {map.desc}
+                </p>
+                <span style={{ fontSize: '0.8rem', color: '#E8192C', fontWeight: 600 }}>
+                  Ver utilidades →
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
