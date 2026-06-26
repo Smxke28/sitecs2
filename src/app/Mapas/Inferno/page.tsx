@@ -15,10 +15,10 @@ const utils: { key: UtilKey; label: string; icon: string }[] = [
 ];
 
 const modalData: Record<UtilKey, { title: string; videos: { src: string; desc: string }[] }> = {
-  smokes:   { title: "Smokes — Inferno",     videos: [{ src: "/videos/dust-smoke-ct.mp4", desc: "Smoke banana — bloqueia push CT." }, { src: "/videos/dust-smoke-cross.mp4", desc: "Smoke apps — entrada segura no A." }] },
-  flashes:  { title: "Flashbangs — Inferno", videos: [{ src: "/videos/dust-flash-long.mp4", desc: "Flash para abrir banana." }, { src: "/videos/dust-flash-mid.mp4", desc: "Flash para entrar no A." }] },
-  molotovs: { title: "Molotovs — Inferno",   videos: [{ src: "/videos/dust-molotov-car.mp4", desc: "Molotov banana — bloqueia avanço." }] },
-  jumps:    { title: "Pulos — Inferno",      videos: [{ src: "/videos/dust-jump-xbox.mp4", desc: "Pulo para posição elevada no A." }] },
+  smokes:   { title: "Smokes — Inferno", videos: [{ src: "https://www.youtube.com/embed/Q2_uGFyMg9E", desc: "Smoke Banana completa — bloqueia visão do CT no topo e base." }, { src: "https://www.youtube.com/embed/NXdcKLeDRoA", desc: "Smoke Apartments e Library — fechamento total da entrada A." }, { src: "https://www.youtube.com/embed/9YvQJCRbKdY", desc: "Smoke CT e Balcony — execução A sem exposição." }] },
+  flashes:  { title: "Flashbangs — Inferno", videos: [{ src: "https://www.youtube.com/embed/fHj9h3GW6kU", desc: "Flash Banana — abre caminho para controle do B." }, { src: "https://www.youtube.com/embed/0WBb_2rMhb8", desc: "Pop-flash Apps — entrada no A sem tomar tiro." }] },
+  molotovs: { title: "Molotovs — Inferno", videos: [{ src: "https://www.youtube.com/embed/Q2_uGFyMg9E", desc: "Molotov Banana e CT — bloqueia avanço e limpa corners." }] },
+  jumps:    { title: "Pulos — Inferno", videos: [{ src: "https://www.youtube.com/embed/NXdcKLeDRoA", desc: "Pulo para posição elevada no balcão A sem boost." }] },
 };
 
 export default function InfernoPage() {
@@ -28,7 +28,8 @@ export default function InfernoPage() {
     <div style={{ background: "linear-gradient(180deg, #050507 0%, #080810 100%)", minHeight: "100vh" }}>
 
       <Link href="/Mapas/Overpass" className="next-map-btn">
-        <Image src="/Overpass.png" width={40} height={40} alt="Overpass" style={{ borderRadius: "8px", objectFit: "cover" }} />
+        <Image src="/Overpass.png" width={40} height={40} alt="Overpass"
+          style={{ borderRadius: "8px", objectFit: "cover" }} />
         <div>
           <div style={{ fontSize: "0.62rem", color: "#555577", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "2px" }}>Próximo mapa</div>
           <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#F5F5F8" }}>Overpass</div>
@@ -91,7 +92,15 @@ export default function InfernoPage() {
             <div style={{ maxHeight: "60vh", overflowY: "auto", display: "flex", flexDirection: "column", gap: "28px", paddingRight: "4px" }}>
               {modalData[active].videos.map((v, i) => (
                 <div key={i} style={{ background: "rgba(255,255,255,0.03)", borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.05)" }}>
-                  <video src={v.src} controls style={{ width: "100%", display: "block" }} />
+                  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden" }}>
+                    <iframe
+                      src={v.src}
+                      title={v.desc}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                    />
+                  </div>
                   <div style={{ padding: "12px 16px" }}>
                     <p style={{ fontSize: "0.875rem", color: "#888899", lineHeight: 1.6 }}>{v.desc}</p>
                   </div>

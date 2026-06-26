@@ -15,24 +15,24 @@ const utils: { key: UtilKey; label: string; icon: string }[] = [
 ];
 
 const modalData: Record<UtilKey, { title: string; videos: { src: string; desc: string }[] }> = {
-  smokes:   { title: "Smokes — Dust II", videos: [{ src: "https://www.youtube.com/embed/9YvQJCRbKdY", desc: "Smoke Cross e CT — as duas smokes mais importantes do A." }, { src: "https://www.youtube.com/embed/fHj9h3GW6kU", desc: "Smoke B doors e B site — fechamento completo da entrada B." }, { src: "https://www.youtube.com/embed/Q2_uGFyMg9E", desc: "Smoke Xbox e Short — controle de mid para rotações." }] },
-  flashes:  { title: "Flashbangs — Dust II", videos: [{ src: "https://www.youtube.com/embed/NXdcKLeDRoA", desc: "Flash Long A — avança com segurança contra sniper." }, { src: "https://www.youtube.com/embed/9YvQJCRbKdY", desc: "Pop-flash B — entrada rápida no bomb B." }] },
-  molotovs: { title: "Molotovs — Dust II", videos: [{ src: "https://www.youtube.com/embed/fHj9h3GW6kU", desc: "Molotov Car e platform no Long A — limpa posições clássicas." }] },
-  jumps:    { title: "Pulos — Dust II", videos: [{ src: "https://www.youtube.com/embed/0WBb_2rMhb8", desc: "Boost para posição de sniper no Long — view única." }] },
+  smokes:   { title: "Smokes — Nuke", videos: [{ src: "https://www.youtube.com/embed/fHj9h3GW6kU", desc: "Smoke Garage e Lobby — bloqueia rotas de entrada TR." }, { src: "https://www.youtube.com/embed/0WBb_2rMhb8", desc: "Smoke Heaven e CT — execução upper site sem exposição." }] },
+  flashes:  { title: "Flashbangs — Nuke", videos: [{ src: "https://www.youtube.com/embed/Q2_uGFyMg9E", desc: "Flash Outside — abre ramp com segurança." }, { src: "https://www.youtube.com/embed/NXdcKLeDRoA", desc: "Pop-flash Lower — entrada rápida no site de baixo." }] },
+  molotovs: { title: "Molotovs — Nuke", videos: [{ src: "https://www.youtube.com/embed/9YvQJCRbKdY", desc: "Molotov Hut e Ramp — limpa corners essenciais no Outside." }] },
+  jumps:    { title: "Pulos — Nuke", videos: [{ src: "https://www.youtube.com/embed/fHj9h3GW6kU", desc: "Pulo para Heaven solo — acesso à posição elevada sem escada." }] },
 };
 
-export default function DustPage() {
+export default function NukePage() {
   const [active, setActive] = useState<UtilKey | null>(null);
 
   return (
     <div style={{ background: "linear-gradient(180deg, #050507 0%, #080810 100%)", minHeight: "100vh" }}>
 
-      <Link href="/Mapas/Inferno" className="next-map-btn">
-        <Image src="/Inferno.png" width={40} height={40} alt="Inferno"
+      <Link href="/Mapas/Ancient" className="next-map-btn">
+        <Image src="/Ancient.jpg" width={40} height={40} alt="Ancient"
           style={{ borderRadius: "8px", objectFit: "cover" }} />
         <div>
           <div style={{ fontSize: "0.62rem", color: "#555577", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "2px" }}>Próximo mapa</div>
-          <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#F5F5F8" }}>Inferno</div>
+          <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#F5F5F8" }}>Ancient</div>
         </div>
         <span style={{ color: "#E8192C", fontSize: "1.1rem" }}>→</span>
       </Link>
@@ -43,11 +43,11 @@ export default function DustPage() {
         </div>
         <div className="section-label" style={{ marginBottom: "16px" }}>Guia Completo</div>
         <h1 className="font-display" style={{ fontSize: "clamp(2.5rem, 7vw, 5rem)", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.01em", lineHeight: 1, marginBottom: "16px" }}>
-          <span style={{ color: "#F5F5F8" }}>Dust II</span>
+          <span style={{ color: "#F5F5F8" }}>Nuke</span>
           <span className="text-red-gradient"> — Utilidades</span>
         </h1>
         <p style={{ fontSize: "1rem", color: "#888899", maxWidth: "500px", lineHeight: 1.7 }}>
-          O clássico absoluto. Long, mid e bomb B definem o ritmo do jogo. Aprenda cada smoke essencial.
+          Mapa vertical com dois andares. Controlar Outside e Ramp é essencial para qualquer execução.
         </p>
       </section>
 
@@ -55,7 +55,7 @@ export default function DustPage() {
 
       <section style={{ maxWidth: "1200px", margin: "0 auto", padding: "48px 24px" }}>
         <div className="map-img-wrap" style={{ position: "relative", height: "clamp(200px, 35vw, 420px)" }}>
-          <Image src="/Dust.png" alt="Dust II" fill style={{ objectFit: "cover" }} priority sizes="100vw" />
+          <Image src="/Nuke.jpg" alt="Nuke" fill style={{ objectFit: "cover" }} priority sizes="100vw" />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 50%, rgba(5,5,7,0.8) 100%)" }} />
         </div>
       </section>

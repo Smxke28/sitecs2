@@ -15,10 +15,10 @@ const utils: { key: UtilKey; label: string; icon: string }[] = [
 ];
 
 const modalData: Record<UtilKey, { title: string; videos: { src: string; desc: string }[] }> = {
-  smokes:   { title: "Smokes — Overpass",     videos: [{ src: "/videos/dust-smoke-ct.mp4", desc: "Smoke canal — controle de rotação." }, { src: "/videos/dust-smoke-cross.mp4", desc: "Smoke short — entrada segura no B." }] },
-  flashes:  { title: "Flashbangs — Overpass", videos: [{ src: "/videos/dust-flash-long.mp4", desc: "Flash água — push agressivo." }, { src: "/videos/dust-flash-mid.mp4", desc: "Flash para entrar no B." }] },
-  molotovs: { title: "Molotovs — Overpass",   videos: [{ src: "/videos/dust-molotov-car.mp4", desc: "Molotov default B — controla posições." }] },
-  jumps:    { title: "Pulos — Overpass",      videos: [{ src: "/videos/dust-jump-xbox.mp4", desc: "Pulo para balcão sem boost." }] },
+  smokes:   { title: "Smokes — Overpass", videos: [{ src: "https://www.youtube.com/embed/9YvQJCRbKdY", desc: "Smoke Canal e Short — bloqueia rotações do CT." }, { src: "https://www.youtube.com/embed/fHj9h3GW6kU", desc: "Smoke B site — fechamento completo para execução." }] },
+  flashes:  { title: "Flashbangs — Overpass", videos: [{ src: "https://www.youtube.com/embed/0WBb_2rMhb8", desc: "Flash Água — push agressivo pelo canal." }, { src: "https://www.youtube.com/embed/Q2_uGFyMg9E", desc: "Pop-flash B — entrada rápida no bomb B." }] },
+  molotovs: { title: "Molotovs — Overpass", videos: [{ src: "https://www.youtube.com/embed/NXdcKLeDRoA", desc: "Molotov default B e short — controla posições defensivas." }] },
+  jumps:    { title: "Pulos — Overpass", videos: [{ src: "https://www.youtube.com/embed/9YvQJCRbKdY", desc: "Pulo para balcão A sem boost — posição de vantagem." }] },
 };
 
 export default function OverpassPage() {
@@ -27,11 +27,12 @@ export default function OverpassPage() {
   return (
     <div style={{ background: "linear-gradient(180deg, #050507 0%, #080810 100%)", minHeight: "100vh" }}>
 
-      <Link href="/Mapas/Mirage" className="next-map-btn">
-        <Image src="/mirage.png" width={40} height={40} alt="Mirage" style={{ borderRadius: "8px", objectFit: "cover" }} />
+      <Link href="/Mapas/Nuke" className="next-map-btn">
+        <Image src="/Nuke.jpg" width={40} height={40} alt="Nuke"
+          style={{ borderRadius: "8px", objectFit: "cover" }} />
         <div>
           <div style={{ fontSize: "0.62rem", color: "#555577", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "2px" }}>Próximo mapa</div>
-          <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#F5F5F8" }}>Mirage</div>
+          <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#F5F5F8" }}>Nuke</div>
         </div>
         <span style={{ color: "#E8192C", fontSize: "1.1rem" }}>→</span>
       </Link>
@@ -91,7 +92,15 @@ export default function OverpassPage() {
             <div style={{ maxHeight: "60vh", overflowY: "auto", display: "flex", flexDirection: "column", gap: "28px", paddingRight: "4px" }}>
               {modalData[active].videos.map((v, i) => (
                 <div key={i} style={{ background: "rgba(255,255,255,0.03)", borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.05)" }}>
-                  <video src={v.src} controls style={{ width: "100%", display: "block" }} />
+                  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden" }}>
+                    <iframe
+                      src={v.src}
+                      title={v.desc}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                    />
+                  </div>
                   <div style={{ padding: "12px 16px" }}>
                     <p style={{ fontSize: "0.875rem", color: "#888899", lineHeight: 1.6 }}>{v.desc}</p>
                   </div>

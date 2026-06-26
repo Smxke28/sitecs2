@@ -6,6 +6,9 @@ const maps = [
   { name: 'Dust II',  img: '/Dust.png',    href: '/Mapas/Dust',    desc: 'O clássico absoluto. Long, mid e bomb B definem rounds inteiros.' },
   { name: 'Inferno',  img: '/Inferno.png', href: '/Mapas/Inferno', desc: 'Fechado e intenso. Controlar banana muda o resultado da partida.' },
   { name: 'Overpass', img: '/Overpass.png',href: '/Mapas/Overpass',desc: 'Complexo e vertical. Canal e short são os pontos mais decisivos.' },
+  { name: 'Nuke',     img: '/Nuke.png',    href: '/Mapas/Nuke',    desc: 'Dois andares, uma guerra. Outside e Ramp definem quem controla o mapa.' },
+  { name: 'Ancient',  img: '/Ancient.png', href: '/Mapas/Ancient', desc: 'Mid e Cave dominam o ritmo — quem controla passa a execução.' },
+  { name: 'Anubis',   img: '/Anubis.png',  href: '/Mapas/Anubis',  desc: 'Canal e Mid controlam o jogo. Smokes de boat e site são obrigatórias.' },
 ];
 
 export default function MapasPage() {
@@ -20,22 +23,24 @@ export default function MapasPage() {
         }}>
           Mapas <span className="text-red-gradient">Disponíveis</span>
         </h1>
-        <p style={{ fontSize: '1rem', color: '#888899', maxWidth: '460px', lineHeight: 1.7 }}>
-          Escolha um mapa para acessar o guia completo de utilidades,
-          smokes, flashes e posições.
+        <p style={{ fontSize: '1rem', color: '#888899', maxWidth: '480px', lineHeight: 1.7 }}>
+          {maps.length} mapas com guias completos de utilidades — smokes, flashes, molotovs e pulos.
+          Escolha um mapa para começar.
         </p>
       </section>
 
       <hr className="divider" />
 
       <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '56px 24px 96px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
-          {maps.map((map, i) => (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
+          {maps.map((map) => (
             <Link key={map.name} href={map.href} className="card-cs2" style={{ textDecoration: 'none', display: 'block' }}>
               <div style={{ position: 'relative', height: '180px', overflow: 'hidden' }}>
-                <Image src={map.img} alt={map.name} fill
+                <Image
+                  src={map.img} alt={map.name} fill
                   style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }}
-                  sizes="(max-width: 768px) 100vw, 320px" />
+                  sizes="(max-width: 768px) 100vw, 340px"
+                />
                 <div style={{
                   position: 'absolute', inset: 0,
                   background: 'linear-gradient(180deg, transparent 30%, rgba(14,14,18,0.97) 100%)',

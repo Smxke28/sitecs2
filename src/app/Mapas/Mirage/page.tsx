@@ -15,10 +15,10 @@ const utils: { key: UtilKey; label: string; icon: string }[] = [
 ];
 
 const modalData: Record<UtilKey, { title: string; videos: { src: string; desc: string }[] }> = {
-  smokes:   { title: "Smokes — Mirage",     videos: [{ src: "/videos/smoke-jungle.mp4", desc: "Smoke Jungle — essencial para execuções A." }, { src: "/videos/smoke-ct.mp4", desc: "Smoke CT — perfeito para entrar no bomb A." }] },
-  flashes:  { title: "Flashbangs — Mirage", videos: [{ src: "/videos/flash-mid.mp4", desc: "Flash para pegar mid avançado." }, { src: "/videos/flash-a.mp4", desc: "Flash estourada A." }] },
-  molotovs: { title: "Molotovs — Mirage",   videos: [{ src: "/videos/molotov-ninja.mp4", desc: "Molotov Ninja — ótimo para retake." }] },
-  jumps:    { title: "Pulos — Mirage",      videos: [{ src: "/videos/jump-window.mp4", desc: "Pulo Janela sem ajuda." }] },
+  smokes:   { title: "Smokes — Mirage", videos: [{ src: "https://www.youtube.com/embed/0WBb_2rMhb8", desc: "Smoke Jungle + CT + Stairs — essencial para execuções no A site." }, { src: "https://www.youtube.com/embed/Q2_uGFyMg9E", desc: "Todas as smokes do B Short e B van para fechar a entrada B." }, { src: "https://www.youtube.com/embed/NXdcKLeDRoA", desc: "Smokes de mid — Connector, Window e Top-mid para controle total." }] },
+  flashes:  { title: "Flashbangs — Mirage", videos: [{ src: "https://www.youtube.com/embed/fHj9h3GW6kU", desc: "Flashes para entrada no A Site — pop-flash Jungle e CT." }, { src: "https://www.youtube.com/embed/NXdcKLeDRoA", desc: "Flash one-way para Window mid — pega qualquer CT desatento." }] },
+  molotovs: { title: "Molotovs — Mirage", videos: [{ src: "https://www.youtube.com/embed/Q2_uGFyMg9E", desc: "Molotov Ninja no A Site e Ticket no B — essenciais para retake." }] },
+  jumps:    { title: "Pulos — Mirage", videos: [{ src: "https://www.youtube.com/embed/0WBb_2rMhb8", desc: "Pulo para Window solo — sem boost, sem ajuda." }] },
 };
 
 export default function MiragePage() {
@@ -28,7 +28,8 @@ export default function MiragePage() {
     <div style={{ background: "linear-gradient(180deg, #050507 0%, #080810 100%)", minHeight: "100vh" }}>
 
       <Link href="/Mapas/Dust" className="next-map-btn">
-        <Image src="/Dust.png" width={40} height={40} alt="Dust II" style={{ borderRadius: "8px", objectFit: "cover" }} />
+        <Image src="/Dust.png" width={40} height={40} alt="Dust II"
+          style={{ borderRadius: "8px", objectFit: "cover" }} />
         <div>
           <div style={{ fontSize: "0.62rem", color: "#555577", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "2px" }}>Próximo mapa</div>
           <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#F5F5F8" }}>Dust II</div>
@@ -91,7 +92,15 @@ export default function MiragePage() {
             <div style={{ maxHeight: "60vh", overflowY: "auto", display: "flex", flexDirection: "column", gap: "28px", paddingRight: "4px" }}>
               {modalData[active].videos.map((v, i) => (
                 <div key={i} style={{ background: "rgba(255,255,255,0.03)", borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.05)" }}>
-                  <video src={v.src} controls style={{ width: "100%", display: "block" }} />
+                  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden" }}>
+                    <iframe
+                      src={v.src}
+                      title={v.desc}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                    />
+                  </div>
                   <div style={{ padding: "12px 16px" }}>
                     <p style={{ fontSize: "0.875rem", color: "#888899", lineHeight: 1.6 }}>{v.desc}</p>
                   </div>
